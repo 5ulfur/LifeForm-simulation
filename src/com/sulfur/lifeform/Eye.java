@@ -18,6 +18,18 @@ public class Eye extends Organ{
         this.start();
     }
 
+    @Override
+    public void run() {
+        while(body.isBodyAlive()) {
+            try {
+                sleep(1000/fps);
+                input();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     void input(){
         try {
             elaborateImage("./res/img/img_input_test.bmp");
@@ -47,13 +59,6 @@ public class Eye extends Organ{
                 }
             }
         }
-
-        for(int i = 0; i < matrix.length; i++){
-            for(int j = 0; j < matrix[0].length; j++){
-                System.out.print(matrix[i][j]);
-            }
-            System.out.println();
-        }
     }
 
     @Override
@@ -66,19 +71,6 @@ public class Eye extends Organ{
             }
         }
         return outputString;
-    }
-
-    @Override
-    public void run() {
-        while(body.isAlive()) {
-            try {
-                sleep(1000/fps);
-                input();
-                break;
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
 }
