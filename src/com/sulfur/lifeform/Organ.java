@@ -1,6 +1,6 @@
 package com.sulfur.lifeform;
 
-public class Organ {
+public abstract class Organ extends Thread{
 
     void input(String input){
 
@@ -10,4 +10,5 @@ public class Organ {
         return "";
     }
 
+    public abstract void run();
 }

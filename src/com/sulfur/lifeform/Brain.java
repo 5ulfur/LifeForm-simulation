@@ -1,10 +1,11 @@
 package com.sulfur.lifeform;
 
 public class Brain extends Organ{
-    private Human human;
+    private Body body;
 
-    public Brain(Human human){
-        this.human = human;
+    public Brain(Body body){
+        this.body = body;
+        this.start();
     }
 
     @Override
@@ -17,14 +18,15 @@ public class Brain extends Organ{
         }
     }
 
-    void process(){
-        while(true){
-            human.getAfferentData();
-        }
-    }
-
     void elaborateImage(){
 
+    }
+
+    @Override
+    public void run() {
+        while(body.isAlive()) {
+            body.getAfferentData();
+        }
     }
 
 }
